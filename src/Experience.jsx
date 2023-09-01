@@ -61,14 +61,14 @@ export function Experience()
 
             <Grid />
 
-            {/* <OrbitControls
+            <OrbitControls
                 enableZoom={false}
                 enablePan={false}
                 dampingFactor={0.05}
                 minPolarAngle={0}
                 maxPolarAngle={Math.PI / 3}
                 makeDefault
-            /> */}
+            />
 
             {/** The environment is just a bunch of shapes emitting light. This is needed for the clear-coat */}
             <Environment resolution={32}>
