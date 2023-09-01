@@ -11,12 +11,12 @@ import { Mesh } from 'three';
 
 export function MainText({ children, config, font = '/Inter_Medium_Regular.json', ...props })
 {
-    const [active, setActive] = useState(false)
+    // const [active, setActive] = useState(false)
 
     // const texture = useLoader(RGBELoader, './poly_haven_studio_1k.hdr');
     return (
         <>
-            <group onClick={() => setActive(!active)}>
+            <group>
                 <Center scale={0.5} front top {...props}>
                     <Text3D
                         castShadow
