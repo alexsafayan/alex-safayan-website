@@ -7,8 +7,8 @@ export const MyCamera = () =>
     const { camera, size } = useThree()
 
     // Given width of the view
-    const viewWidth = 1100
-    const viewHeight = viewWidth * (size.height / size.width)
+    const viewWidth = Math.max(800, size.width)
+    const viewHeight = Math.max(viewWidth, size.width) * (size.height / size.width)
 
     useEffect(() =>
     {
@@ -18,6 +18,11 @@ export const MyCamera = () =>
             camera.top = viewHeight / 2
             camera.bottom = -viewHeight / 2
             camera.updateProjectionMatrix()
+
+            console.log("viewWidth: " + viewWidth);
+            console.log("viewHeight: " + viewHeight);
+            console.log("size.width: " + size.width);
+            console.log("size.height: " + size.height);
         }
     }, [camera, viewWidth, viewHeight])
 

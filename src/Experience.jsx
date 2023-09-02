@@ -5,23 +5,27 @@ import
     Lightformer,
     OrbitControls,
     RandomizedLight,
-    AccumulativeShadows
+    AccumulativeShadows,
+    GizmoHelper,
+    GizmoViewport
 } from '@react-three/drei'
 import { useControls } from 'leva'
 import { EffectComposer, HueSaturation, BrightnessContrast } from '@react-three/postprocessing'
 import { useSpring, animated } from '@react-spring/three'
-import { Suspense } from 'react'
+import { useRef, Suspense, useState } from 'react'
 import { MainText } from './MainText'
+import { MainText2 } from './MainText2'
 import { Grid } from './Grid'
 import { MyCamera } from './MyCamera'
-import { Text } from './Text'
+import { HTMLContent } from './Content'
+import { Perf } from 'r3f-perf'
 
 export function Experience()
 {
     const backsideThickness = 0.3;
     const { autoRotate, text, shadow, position, ...config } = useControls({
         backside: true,
-        position: { value: [-1, 20, 8] },
+        position: { value: [0, 20, 8] },
         backsideThickness: { value: 0.6, min: 0, max: 2 },
         samples: { value: 16, min: 1, max: 32, step: 1 },
         resolution: { value: 1024, min: 64, max: 2048, step: 64 },
@@ -40,13 +44,17 @@ export function Experience()
         gColor: '#ff7eb3',
         shadow: '#750d57',
     })
+
+    const canvasRef = useRef()
+
     return (
-        <Canvas shadows orthographic camera={{ position: position, zoom: 80 }}>
+        <Canvas ref={canvasRef} style={{
+            cursor: 'grab'
+        }} shadows orthographic camera={{ position: position, zoom: 60 }}>
             <MyCamera />
+            {/* <Perf /> */}
 
             <color attach="background" args={['#f2f2f5']} />
-
-            <Text fontWeight={"Bold"} fontSize={80} position={[0, -1, -1]} hidden={true}>Alex Safayan</Text>
 
             <Suspense fallback={null}>
                 <MainText scale={[0.3, 0.3, 0.25]} config={config} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0.25]}>
@@ -57,18 +65,11 @@ export function Experience()
                 </AccumulativeShadows>
             </Suspense>
 
-            <Text position={[0, -1, 1]}>CS Student at Northwestern University</Text>
+            <HTMLContent canvasRef={canvasRef} />
 
             <Grid />
 
-            <OrbitControls
-                enableZoom={false}
-                enablePan={false}
-                dampingFactor={0.05}
-                minPolarAngle={0}
-                maxPolarAngle={Math.PI / 3}
-                makeDefault
-            />
+
 
             {/** The environment is just a bunch of shapes emitting light. This is needed for the clear-coat */}
             <Environment resolution={32}>
@@ -81,6 +82,10 @@ export function Experience()
                 </group>
             </Environment>
             {/** Soft shadows */}
+
+            <GizmoHelper alignment="bottom-right" margin={[64, 64]}>
+                <GizmoViewport labelColor="white" axisHeadScale={1} />
+            </GizmoHelper>
         </Canvas >
     )
 }
