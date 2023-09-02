@@ -45,7 +45,7 @@ export function Experience()
         shadow: '#750d57',
     })
 
-    const canvasRef = useRef()
+    const canvasRef = useRef();
 
     return (
         <Canvas ref={canvasRef} style={{
@@ -65,9 +65,22 @@ export function Experience()
                 </AccumulativeShadows>
             </Suspense>
 
-            <HTMLContent canvasRef={canvasRef} />
+            <HTMLContent />
 
             <Grid />
+
+            <OrbitControls
+                enableZoom
+                maxZoom={200}
+                minZoom={40}
+                enablePan={false}
+                dampingFactor={0.05}
+                minPolarAngle={-1}
+                maxPolarAngle={Math.PI / 3}
+                makeDefault
+                onStart={() => { canvasRef.current.style.cursor = 'grabbing' }}
+                onEnd={() => { console.log("onEnd"); canvasRef.current.style.cursor = 'grab' }}
+            />
 
 
 
