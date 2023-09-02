@@ -12,7 +12,7 @@ import { Mesh } from 'three';
 
 export function MainText({ children, config, font = '/Inter_Medium_Regular.json', ...props })
 {
-    const texture = useLoader(RGBELoader, './poly_haven_studio_1k.hdr');
+    const texture = useLoader(RGBELoader, 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/st_fagans_interior_1k.hdr')
 
     return (
         <>

@@ -19,10 +19,10 @@ export const MyCamera = () =>
             camera.bottom = -viewHeight / 2
             camera.updateProjectionMatrix()
 
-            console.log("viewWidth: " + viewWidth);
-            console.log("viewHeight: " + viewHeight);
-            console.log("size.width: " + size.width);
-            console.log("size.height: " + size.height);
+            // console.log("viewWidth: " + viewWidth);
+            // console.log("viewHeight: " + viewHeight);
+            // console.log("size.width: " + size.width);
+            // console.log("size.height: " + size.height);
         }
     }, [camera, viewWidth, viewHeight])
 

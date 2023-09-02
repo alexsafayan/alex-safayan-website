@@ -19,6 +19,9 @@ import { Grid } from './Grid'
 import { MyCamera } from './MyCamera'
 import { HTMLContent } from './Content'
 import { Perf } from 'r3f-perf'
+import { Image } from './Image'
+import { Setup } from './Setup'
+
 
 export function Experience()
 {
@@ -52,20 +55,21 @@ export function Experience()
             cursor: 'grab'
         }} shadows orthographic camera={{ position: position, zoom: 60 }}>
             <MyCamera />
+            <Setup />
             {/* <Perf /> */}
 
             <color attach="background" args={['#f2f2f5']} />
 
-            <Suspense fallback={null}>
-                <MainText scale={[0.3, 0.3, 0.25]} config={config} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0.25]}>
-                    Alex Safayan
-                </MainText>
-                <AccumulativeShadows frames={100} color={shadow} colorBlend={5} toneMapped={true} alphaTest={0.9} opacity={0.95} scale={30} position={[0, -1.01, 0]}>
-                    <RandomizedLight amount={4} radius={10} ambient={0.5} intensity={1} position={[0, 10, -10]} size={15} mapSize={1024} bias={0.0001} />
-                </AccumulativeShadows>
-            </Suspense>
+            <MainText scale={[0.3, 0.3, 0.25]} config={config} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0.25]}>
+                Alex Safayan
+            </MainText>
+            <AccumulativeShadows frames={100} color={shadow} colorBlend={5} toneMapped={true} alphaTest={0.9} opacity={0.95} scale={30} position={[0, -1.01, 0]}>
+                <RandomizedLight amount={4} radius={10} ambient={0.5} intensity={1} position={[0, 10, -10]} size={15} mapSize={1024} bias={0.0001} />
+            </AccumulativeShadows>
 
             <HTMLContent />
+
+            <Image imageUrl={'./images/ggl.webp'} linkUrl={'https://www.behance.net/alexsafayan'} position={[0, -0.75, 4]} scale={0.5} />
 
             <Grid />
 
@@ -75,7 +79,7 @@ export function Experience()
                 minZoom={40}
                 enablePan={false}
                 dampingFactor={0.05}
-                minPolarAngle={-1}
+                minPolarAngle={0}
                 maxPolarAngle={Math.PI / 3}
                 makeDefault
                 onStart={() => { canvasRef.current.style.cursor = 'grabbing' }}
