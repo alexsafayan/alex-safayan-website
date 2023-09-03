@@ -7,8 +7,6 @@ import
     OrbitControls,
     RandomizedLight,
     AccumulativeShadows,
-    GizmoHelper,
-    GizmoViewport,
     Html
 } from '@react-three/drei'
 import { useControls } from 'leva'
@@ -24,6 +22,8 @@ import { Perf } from 'r3f-perf'
 import { Image } from './Image'
 import { Setup } from './Setup'
 import { Text } from './Text'
+import { GizmoHelper } from './GizmoHelper.tsx'
+import { GizmoViewport } from './GizmoViewport.tsx'
 
 
 export function Experience()
