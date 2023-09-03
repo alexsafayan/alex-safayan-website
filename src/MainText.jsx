@@ -7,8 +7,6 @@ import
     Text3D,
     MeshTransmissionMaterial,
 } from '@react-three/drei';
-import { useState } from 'react';
-import { Mesh } from 'three';
 
 export function MainText({ children, config, font = '/Inter_Medium_Regular.json', ...props })
 {

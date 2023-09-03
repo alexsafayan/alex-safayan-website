@@ -10,6 +10,11 @@ export const MyCamera = () =>
     const viewWidth = Math.max(800, size.width)
     const viewHeight = Math.max(viewWidth, size.width) * (size.height / size.width)
 
+    // useFrame(() =>
+    // {
+    //     // intro animation
+    // })
+
     useEffect(() =>
     {
         if (camera instanceof OrthographicCamera) {

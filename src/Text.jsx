@@ -9,11 +9,16 @@ export function Text({ children, fontWeight, fontSize = 16, hidden = false, ...p
         fontSize: fontSize || 'inherit',
         color: hidden ? 'transparent' : 'inherit',
         userSelect: 'none',
+        pointerEvents: 'none !important', // doesn't work??
         background: hidden ? 'transparent' : 'inherit'
     };
 
     return (
-        <Html rotation-x={-Math.PI / 2} transform {...props}>
+        <Html
+            wrapperClass={'noInteract'}
+            rotation-x={-Math.PI / 2}
+            transform {...props}
+        >
             <div
                 style={style}
             >

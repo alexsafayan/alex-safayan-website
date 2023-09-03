@@ -5,14 +5,14 @@ import Email from "./Email";
 export function Overlay()
 {
     return (
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
-            <div style={{ position: 'absolute', top: 24, left: 24, fontSize: '13px', pointerEvents: 'all' }}>
+        <div className="Overlay">
+            <div className="corner top-left">
                 <Time />
             </div>
-            <div style={{ position: 'absolute', bottom: 24, left: 24, fontSize: '13px', pointerEvents: 'all' }}>
+            <div className="corner bottom-left">
                 <Size />
             </div>
-            <div style={{ position: 'absolute', top: 24, right: 24, fontSize: '13px', pointerEvents: 'all' }}>
+            <div className="corner top-right">
                 <Email />
             </div>
         </div>
