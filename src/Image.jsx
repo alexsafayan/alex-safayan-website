@@ -1,17 +1,19 @@
-import { Html, Edges } from '@react-three/drei';
-import { useDarkMode } from './DarkModeContext';
+import { Html, Edges, PivotControls } from '@react-three/drei';
+import { useModes } from './DarkModeContext';
+import { MyPivotControls } from './MyPivotControls'
 
 export function Image({ imageUrl, linkUrl, title, position, boxArgs, ...props })
 {
-    const { darkMode } = useDarkMode()
+    const { darkMode, editMode } = useModes()
 
-    return <group position={position}>
+
+    return <MyPivotControls><group position={position}>
         <mesh castShadow position-y={boxArgs[1] / 2}>
             <boxGeometry args={boxArgs} />
             <meshStandardMaterial color={darkMode ? '#111' : '#ffffff'} />
             <Edges color={darkMode ? '#ccc' : '#666'} />
         </mesh>
-        <Html
+        {!editMode && <Html
             transform
             scale={0.309}
             position-y={boxArgs[1]}
@@ -23,6 +25,6 @@ export function Image({ imageUrl, linkUrl, title, position, boxArgs, ...props })
                     <a target='_blank' href={linkUrl}><img className={'Image'} src={imageUrl} alt={title} /></a>
                 </div>
             </div>
-        </Html>
-    </group>
+        </Html>}
+    </group></MyPivotControls >
 }

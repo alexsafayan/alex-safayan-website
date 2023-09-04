@@ -8,7 +8,9 @@ import
     OrbitControls,
     RandomizedLight,
     AccumulativeShadows,
-    Html
+    Html,
+    ContactShadows,
+    PivotControls
 } from '@react-three/drei'
 import { useControls } from 'leva'
 import { EffectComposer, HueSaturation, BrightnessContrast } from '@react-three/postprocessing'
@@ -26,19 +28,18 @@ import { Text } from './Text'
 import { GizmoHelper } from './GizmoHelper.tsx'
 import { GizmoViewport } from './GizmoViewport.tsx'
 import { Socials } from './Socials'
-import { useDarkMode } from './DarkModeContext';
+import { useModes } from './DarkModeContext';
+import { Physics } from '@react-three/cannon'
+import { Cube, Plane } from './PhysicsObjects'
 
 
 export function Experience()
 {
-    const MemoizedShadows = React.memo(AccumulativeShadows);
-    const MemoizedLight = React.memo(RandomizedLight);
-    const { darkMode } = useDarkMode()
-    const backsideThickness = 0.3
+    const { darkMode, editMode } = useModes()
     const { autoRotate, text, shadow, position, positionn, ...config } = useControls({
         positionn: { value: [0, -0.5, 8] },
         backside: true,
-        position: { value: [0, 20, 0] },
+        position: { value: [0, 20, 5] },
         backsideThickness: { value: 0.6, min: 0, max: 2 },
         samples: { value: 2, min: 1, max: 32, step: 1 },
         resolution: { value: 1024, min: 64, max: 2048, step: 64 },
@@ -61,7 +62,7 @@ export function Experience()
     const canvasRef = useRef();
 
     return (
-        <Canvas ref={canvasRef} style={{ cursor: 'grab' }} shadows orthographic camera={{ position: position, zoom: 60 }}>
+        <Canvas dpr={[1, 2]} ref={canvasRef} style={{ cursor: 'grab' }} shadows orthographic camera={{ position: position, zoom: 60 }}>
             <Suspense>
                 <MyCamera />
                 {/* <Setup /> MAKE TEXT LOOK BAD */}
@@ -146,7 +147,7 @@ export function Experience()
                 </Environment>
 
                 {/* BUG: Whenever the darkMode state updates, we rerender these shadows, causing a frame drop. */}
-                {!darkMode && <AccumulativeShadows temporal frames={90} color={shadow} colorBlend={5} toneMapped={true} alphaTest={0.9} opacity={0.95} scale={17} position={[0, -1.01, 0]}>
+                {!darkMode && !editMode && <AccumulativeShadows temporal frames={90} color={shadow} colorBlend={5} toneMapped={true} alphaTest={0.9} opacity={0.95} scale={17} position={[0, -1.01, 0]}>
                     <RandomizedLight amount={4} radius={10} ambient={0.5} intensity={1} position={[0, 10, -10]} size={15} mapSize={1024} bias={0.0001} />
                 </AccumulativeShadows>}
 

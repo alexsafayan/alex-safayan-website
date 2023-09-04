@@ -1,11 +1,11 @@
 import Time from "./Time";
 import Size from "./Size";
 import Email from "./Email";
-import { useDarkMode } from './DarkModeContext';
+import { useModes } from './DarkModeContext';
 
 export function Overlay()
 {
-    const { darkMode, setDarkMode } = useDarkMode();
+    const { darkMode, setDarkMode, editMode, setEditMode } = useModes();
 
     return (
         <div className={`Overlay ${darkMode ? 'dark-mode' : ''}`}>
@@ -15,8 +15,11 @@ export function Overlay()
             <div className="corner bottom-left">
                 <Size />
             </div>
-            <div className="corner top-right">
-                <span style={{ cursor: 'pointer', fontSize: '26px' }} onClick={() => setDarkMode(!darkMode)}>
+            <div className="corner top-right" style={{ cursor: 'pointer', fontSize: '26px' }}>
+                <span onClick={() => setEditMode(!editMode)}>
+                    {editMode ? '📌' : '📝'}
+                </span>
+                <span onClick={() => setDarkMode(!darkMode)}>
                     {darkMode ? '🌞' : '🌒'}
                 </span>
             </div>

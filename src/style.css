@@ -30,6 +30,7 @@ a {
 }
 
 .noInteract {
+    user-select: none !important;
     pointer-events: none !important;
 }
 
@@ -68,6 +69,8 @@ a {
 .corner.top-right {
     top: 24px;
     right: 24px;
+    display: flex;
+    gap: 16px;
 }
 
 /* 

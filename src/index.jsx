@@ -4,13 +4,13 @@ import { Experience } from './Experience'
 import { ExperienceTest } from './ExperienceTest'
 import { Leva } from 'leva'
 import { Overlay } from './Overlay'
-import { DarkModeProvider } from './DarkModeContext'
+import { ModeProvider } from './DarkModeContext'
 
 createRoot(document.getElementById('root')).render(
-    <DarkModeProvider>
+    <ModeProvider>
         <Experience />
         <Overlay />
         {/* <ExperienceTest /> */}
         <Leva hidden={true} />
-    </DarkModeProvider>
+    </ModeProvider>
 )

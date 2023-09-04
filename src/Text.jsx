@@ -1,9 +1,9 @@
 import { Html } from '@react-three/drei';
-import { useDarkMode } from './DarkModeContext';
+import { useModes } from './DarkModeContext';
 
 export function Text({ children, fontWeight, fontSize = 16, hidden = false, ...props })
 {
-    const { darkMode } = useDarkMode()
+    const { darkMode, editMode } = useModes()
 
     const style = {
         fontWeight: fontWeight || 'normal',
@@ -15,17 +15,17 @@ export function Text({ children, fontWeight, fontSize = 16, hidden = false, ...p
     };
 
     return (
-        <Html
-            wrapperClass={'noInteract'}
-            rotation-x={-Math.PI / 2}
-            transform {...props}
-        >
-            <div
-                style={style}
+        !editMode && (
+            <Html
+                wrapper="div"
+                className="noInteract"
+                transform
+                rotation-x={-Math.PI / 2}
+                {...props}
             >
-                {children}
-            </div>
-        </Html>
+                <div style={style}>{children}</div>
+            </Html>
+        )
     );
 
 }

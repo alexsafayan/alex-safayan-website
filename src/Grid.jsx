@@ -3,12 +3,12 @@ import
     Instance,
     Instances,
 } from '@react-three/drei'
-import { useDarkMode } from './DarkModeContext'
+import { useModes } from './DarkModeContext'
 
 // Renders a grid and crosses as instances
 export const Grid = ({ number = 23, lineWidth = 0.026, height = 0.5 }) =>
 {
-    const { darkMode } = useDarkMode()
+    const { darkMode } = useModes()
     return (
         <Instances position={[0, -1.02, 0]}>
             <planeGeometry args={[lineWidth, height]} />

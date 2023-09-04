@@ -7,13 +7,16 @@ import
     Text3D,
     MeshTransmissionMaterial,
 } from '@react-three/drei';
+import { useModes } from './DarkModeContext';
+import { MyPivotControls } from './MyPivotControls';
 
 export function MainText({ children, config, font = '/Inter_Medium_Regular.json', ...props })
 {
     const texture = useLoader(RGBELoader, 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/st_fagans_interior_1k.hdr')
+    const { darkMode, editMode } = useModes()
 
     return (
-        <>
+        <MyPivotControls>
             <group>
                 <Center scale={0.5} front top {...props}>
                     <Text3D
@@ -32,6 +35,6 @@ export function MainText({ children, config, font = '/Inter_Medium_Regular.json'
                     </Text3D>
                 </Center>
             </group>
-        </>
+        </MyPivotControls>
     );
 }

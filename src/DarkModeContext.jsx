@@ -1,21 +1,22 @@
 import { createContext, useContext, useState } from 'react';
 
-const DarkModeContext = createContext();
+const ModeContext = createContext();
 
-export const DarkModeProvider = ({ children }) =>
+export const ModeProvider = ({ children }) =>
 {
     const [darkMode, setDarkMode] = useState(false);
+    const [editMode, setEditMode] = useState(false);
 
     return (
-        <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
+        <ModeContext.Provider value={{ darkMode, setDarkMode, editMode, setEditMode }}>
             {children}
-        </DarkModeContext.Provider>
+        </ModeContext.Provider>
     );
 };
 
-export const useDarkMode = () =>
+export const useModes = () =>
 {
-    const context = useContext(DarkModeContext);
+    const context = useContext(ModeContext);
     if (!context) {
         throw new Error('useDarkMode must be used within a DarkModeProvider');
     }

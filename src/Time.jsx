@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useModes } from './DarkModeContext';
 
 export function Time()
 {
     const [time, setTime] = useState(new Date());
+    const { setDarkMode } = useModes()
 
     useEffect(() =>
     {
+        const hour = time.getHours();
+        if (hour > 19 || hour < 5) {
+            console.log('Dark mode on – compliments of the chef.');
+            document.body.style.backgroundColor = "black";
+            setDarkMode(true)
+        }
         const interval = setInterval(updateTime, 1000);
         return () => clearInterval(interval);
     }, []);

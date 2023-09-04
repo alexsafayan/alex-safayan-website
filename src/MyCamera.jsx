@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { OrthographicCamera } from 'three'
+import { useModes } from './DarkModeContext';
 
 export const MyCamera = () =>
 {
     const { camera, size } = useThree()
+    const { darkMode, editMode } = useModes()
 
     // Given width of the view
     const viewWidth = Math.max(800, size.width)
