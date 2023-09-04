@@ -137,6 +137,11 @@ export const GizmoViewport = ({
             }
             : undefined,
     }
+    // React.useEffect(() => {
+    //     // setTimeout(() => {
+    //     //     tweenCamera(new Vector3(0, 0.3, 0.6))
+    //     // }, 0)
+    // }, [])
     return (
         <group scale={40} {...props}>
             <Axis color={colorX} rotation={[0, 0, 0]} scale={axisScale} />

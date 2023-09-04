@@ -99,7 +99,7 @@ export const GizmoHelper = ({
         if (virtualCam.current && gizmoRef.current) {
             // Animate step
             if (animating.current) {
-                console.log('animating');
+                // console.log('animating');
 
                 if (q1.angleTo(q2) < 0.01) {
                     animating.current = false
