@@ -73,6 +73,14 @@ a {
     gap: 16px;
 }
 
+.bottom {
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    /* assuming the element should be absolutely positioned */
+}
+
 /* 
     Image
  */
