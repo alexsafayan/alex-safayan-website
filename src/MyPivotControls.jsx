@@ -4,7 +4,7 @@ import { useModes } from './DarkModeContext';
 export function MyPivotControls({ children })
 {
     const { darkMode, editMode } = useModes()
-    return <PivotControls scale={65} lineWidth={3} fixed castShadow={false} visible={editMode} anchor={[-1, -1, -1]} depthTest={false}>
+    return <PivotControls scale={100} lineWidth={6} fixed castShadow={false} visible={editMode} anchor={[-1, -1, -1]} depthTest={false}>
         {children}
     </PivotControls >
 }
