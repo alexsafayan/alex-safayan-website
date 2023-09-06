@@ -1,11 +1,11 @@
-import { Html, Edges, PivotControls } from '@react-three/drei';
+import { Html, Edges } from '@react-three/drei';
 import { useModes } from './DarkModeContext';
 import { MyPivotControls } from './MyPivotControls'
+import { FiExternalLink } from 'react-icons/fi'
 
 export function Image({ imageUrl, linkUrl, title, position, boxArgs, ...props })
 {
     const { darkMode, editMode } = useModes()
-
 
     return <MyPivotControls><group position={position}>
         <mesh castShadow position-y={boxArgs[1] / 2}>
@@ -20,9 +20,11 @@ export function Image({ imageUrl, linkUrl, title, position, boxArgs, ...props })
             rotation-x={-Math.PI / 2}
         >
             <div className={`ImageWrapper`}>
-                <span className={`ImageTitle ${darkMode ? 'dark-mode' : ''}`}>{title}</span>
+                <span className={`ImageTitle ${darkMode ? 'dark-mode' : ''}`}>
+                    {title} {linkUrl && <FiExternalLink style={{ strokeWidth: '1.5' }} />}
+                </span>
                 <div className="ImageCropper">
-                    <a target='_blank' href={linkUrl}><img className={'Image'} src={imageUrl} alt={title} /></a>
+                    <a target="_blank" rel="noopener noreferrer" href={linkUrl}><img className={'Image'} src={imageUrl} alt={title} /></a>
                 </div>
             </div>
         </Html>}

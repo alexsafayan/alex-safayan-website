@@ -1,7 +1,9 @@
 import Time from "./Time";
 import Size from "./Size";
-import Email from "./Email";
+
 import { useModes } from './DarkModeContext';
+import { FiSquare, FiMove, FiSun, FiMoon } from 'react-icons/fi';
+import { Instructions } from "./Instructions";
 
 export function Overlay()
 {
@@ -17,14 +19,14 @@ export function Overlay()
                 <Size />
             </div>
             <div className="corner bottom">
-                <span>Made by Alex Safayan</span>
+                <Instructions />
             </div>
             <div className="corner top-right" style={{ cursor: 'pointer', fontSize: '26px' }}>
                 <span onClick={() => setEditMode(!editMode)}>
-                    {editMode ? '📌' : '📝'}
+                    {editMode ? <FiSquare size={22} /> : <FiMove size={22} />}
                 </span>
                 <span onClick={() => setDarkMode(!darkMode)}>
-                    {darkMode ? '🌞' : '🌒'}
+                    {darkMode ? <FiSun size={22} /> : <FiMoon size={22} />}
                 </span>
             </div>
         </div>

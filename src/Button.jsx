@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Html, Edges } from '@react-three/drei';
 import { useModes } from './DarkModeContext';
 import { MyPivotControls } from './MyPivotControls'
+import { FiCopy, FiCheck } from 'react-icons/fi'
 
 export function Button({ imageUrl, linkUrl, title, position, boxArgs, ...props })
 {
@@ -72,10 +73,9 @@ export function Button({ imageUrl, linkUrl, title, position, boxArgs, ...props }
                             justifyContent: 'center',
                             alignContent: 'center'
                         }}>
-                        <span className={`ImageTitle ${darkMode ? 'dark-mode' : ''}`}
-                            style={{
-                                transform: 'translateX(-80px) translateY(-80px)'
-                            }}>{isCopied ? 'Copied!' : 'Copy?'}</span>
+                        <span className={`ImageTitle ${darkMode ? 'dark-mode' : ''}`} style={{ transform: 'translateX(-80px) translateY(-80px)' }}>
+                            Email {isCopied ? <FiCheck /> : <FiCopy />}
+                        </span>
                         {email}
                     </div>
                 </Html>}

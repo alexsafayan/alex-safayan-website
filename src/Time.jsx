@@ -9,7 +9,7 @@ export function Time()
     useEffect(() =>
     {
         const hour = time.getHours();
-        if (hour > 19 || hour < 5) {
+        if (hour > 18 || hour < 6) {
             console.log('Dark mode on – compliments of the chef.');
             document.body.style.backgroundColor = "black";
             setDarkMode(true)

@@ -23,6 +23,7 @@ import { MyCamera } from './MyCamera'
 import { HTMLContent } from './Content'
 import { Perf } from 'r3f-perf'
 import { Image } from './Image'
+import { Video } from './Video'
 import { Setup } from './Setup'
 import { Text } from './Text'
 import { GizmoHelper } from './GizmoHelper.tsx'
@@ -115,6 +116,14 @@ export function Experience()
                     linkUrl={'https://rooms.xyz'}
                     position={[6.5, -1, 2]}
                     boxArgs={[3, 0.25, 2]}
+                />
+
+                <Video
+                    title={'creativity.mp4'}
+                    imageUrl={'./images/2-min-vid.webp'}
+                    videoURL={'./videos/2-min-vid.mp4'}
+                    position={[0, -1, -9.5]}
+                    boxArgs={[4, 0.25, 3]}
                 />
 
                 <Socials />

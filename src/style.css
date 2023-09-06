@@ -67,7 +67,7 @@ a {
 }
 
 .corner.top-right {
-    top: 24px;
+    top: 18px;
     right: 24px;
     display: flex;
     gap: 16px;
@@ -80,6 +80,53 @@ a {
     position: absolute;
     /* assuming the element should be absolutely positioned */
 }
+
+.fadeOut {
+    animation: fadeOutEffect 0.5s ease-in forwards;
+
+}
+
+.fadeIn {
+    animation: fadeInEffect 0.5s ease-out forwards;
+
+}
+
+.fadeInOut {
+    animation: fadeInOutEffect 1s ease-in-out 5;
+}
+
+@keyframes fadeInEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutEffect {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOutEffect {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
 
 /* 
     Image
@@ -100,6 +147,10 @@ a {
     background-color: #f5f5f5;
 }
 
+.ImageTitle svg {
+    font-size: 24px;
+}
+
 .ImageWrapper {
     transform: scale(0.9);
     transition: transform 0.2s ease;
@@ -107,7 +158,6 @@ a {
 
 .ImageCropper {
     overflow: hidden;
-    transition: all 0.2s ease;
 }
 
 .ImageWrapper .Image {
@@ -143,4 +193,30 @@ a {
 
 .dark-mode {
     color: #eee;
+}
+
+.ImageWrapper video {
+    cursor: pointer;
+    filter: grayscale(100%);
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.ImageWrapper.on {
+    transform: scale(1);
+}
+
+.ImageWrapper.on video {
+    filter: grayscale(0%);
+    transform: scale(1);
+}
+
+.ImageWrapper:hover video {
+    filter: grayscale(0%);
+    transform: scale(1);
+}
+
+.ImageWrapper video.active {
+    filter: grayscale(0%);
+    transform: scale(1);
 }
