@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+::selection {
+    background-color: rgb(255, 249, 168);
+    color: black;
+}
+
 html,
 body,
 #root {
@@ -92,7 +97,7 @@ a {
 }
 
 .fadeInOut {
-    animation: fadeInOutEffect 1s ease-in-out 5;
+    animation: fadeInOutEffect 1s ease-in-out 6;
 }
 
 @keyframes fadeInEffect {

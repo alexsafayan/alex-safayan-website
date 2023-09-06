@@ -7,10 +7,13 @@ import { FiPlay, FiPause } from 'react-icons/fi';
 
 export function Video({ imageUrl, linkUrl, videoURL, title, position, boxArgs, ...props })
 {
+    // console.log("Video component rendered");
     const { darkMode, editMode } = useModes();
     const wrapperRef = useRef(null);
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+
 
     const toggleVideoPlayback = () =>
     {
@@ -29,6 +32,17 @@ export function Video({ imageUrl, linkUrl, videoURL, title, position, boxArgs, .
         }
     };
 
+    // Pre-loads video after page load
+    const preLoadVideo = () =>
+    {
+        const video = videoRef.current
+        if (video && !isLoaded) {
+            setIsLoaded(true)
+            video.load()
+        }
+    }
+
+    // Resets video after ending
     useEffect(() =>
     {
         const video = videoRef.current
@@ -60,7 +74,13 @@ export function Video({ imageUrl, linkUrl, videoURL, title, position, boxArgs, .
                                 {title} {isPlaying ? <FiPause style={{ strokeWidth: '1.5' }} /> : <FiPlay style={{ strokeWidth: '1.5' }} />}
                             </span>
                             <div className="ImageCropper">
-                                <video onClick={toggleVideoPlayback} ref={videoRef} src={videoURL} controls={false} width="100%" poster={imageUrl} preload="none"></video>
+                                <video onClick={toggleVideoPlayback} ref={(elem) =>
+                                {
+                                    videoRef.current = elem;
+                                    if (elem) {
+                                        preLoadVideo()
+                                    }
+                                }} src={videoURL} controls={false} width="100%" poster={imageUrl} preload="none"></video>
                             </div>
                         </div>
                     </Html>
