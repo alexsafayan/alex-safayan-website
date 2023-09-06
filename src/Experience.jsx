@@ -156,7 +156,7 @@ export function Experience()
                 </Environment>
 
                 {/* BUG: Whenever the darkMode state updates, we rerender these shadows, causing a frame drop. */}
-                {!darkMode && !editMode && <AccumulativeShadows temporal frames={90} color={shadow} colorBlend={5} toneMapped={true} alphaTest={0.9} opacity={0.95} scale={17} position={[0, -1.01, 0]}>
+                {!darkMode && !editMode && <AccumulativeShadows temporal frames={90} color={shadow} colorBlend={5} toneMapped={true} alphaTest={0.9} opacity={0.95} scale={18} position={[0, -1.01, -2]}>
                     <RandomizedLight amount={4} radius={10} ambient={0.5} intensity={1} position={[0, 10, -10]} size={15} mapSize={1024} bias={0.0001} />
                 </AccumulativeShadows>}
 
