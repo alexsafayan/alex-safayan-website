@@ -1,7 +1,7 @@
 import { Html, Edges } from '@react-three/drei';
 import { useModes } from './DarkModeContext';
 import { MyPivotControls } from './MyPivotControls'
-import { FiExternalLink } from 'react-icons/fi'
+import { FiArrowUpRight } from 'react-icons/fi'
 
 export function Image({ imageUrl, linkUrl, title, position, boxArgs, ...props })
 {
@@ -21,7 +21,7 @@ export function Image({ imageUrl, linkUrl, title, position, boxArgs, ...props })
         >
             <div className={`ImageWrapper`}>
                 <span className={`ImageTitle ${darkMode ? 'dark-mode' : ''}`}>
-                    {title} {linkUrl && <FiExternalLink style={{ strokeWidth: '1.5' }} />}
+                    {title} {linkUrl && <FiArrowUpRight />}
                 </span>
                 <div className="ImageCropper">
                     <a target="_blank" rel="noopener noreferrer" href={linkUrl}><img className={'Image'} src={imageUrl} alt={title} /></a>

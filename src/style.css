@@ -153,7 +153,8 @@ a {
 }
 
 .ImageTitle svg {
-    font-size: 24px;
+    font-size: 28px;
+    transform: translate(-4px, 2px);
 }
 
 .ImageWrapper {
